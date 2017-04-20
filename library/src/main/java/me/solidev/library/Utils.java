@@ -19,7 +19,7 @@ class Utils {
     private static List<Character> sPunctuations;
 
     static {
-        Character[] arr = new Character[]{',', '.', ';', '!', '"', '，', '。', '！', '；', '、', '：', '“', '”','?','？'};
+        Character[] arr = new Character[]{',', '.', ';', '!', '"', '，', '。', '！', '；', '、', '：', '“', '”','?','？','(',')'};
         sPunctuations = Arrays.asList(arr);
     }
 

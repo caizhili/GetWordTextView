@@ -138,14 +138,16 @@ public class GetWordTextView extends TextView {
             @Override
             public void onClick(View widget) {
                 TextView tv = (TextView) widget;
-                String word = tv
-                        .getText()
-                        .subSequence(tv.getSelectionStart(),
-                                tv.getSelectionEnd()).toString();
-                setSelectedSpan(tv);
+                if(tv.getSelectionStart()!=-1&&tv.getSelectionEnd()!=-1) {
+                    String word = tv
+                            .getText()
+                            .subSequence(tv.getSelectionStart(),
+                                    tv.getSelectionEnd()).toString();
+                    setSelectedSpan(tv);
 
-                if (mOnWordClickListener != null) {
-                    mOnWordClickListener.onClick(word);
+                    if (mOnWordClickListener != null) {
+                        mOnWordClickListener.onClick(word);
+                    }
                 }
             }
 
