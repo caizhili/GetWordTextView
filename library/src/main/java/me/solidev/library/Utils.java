@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by _SOLID
@@ -29,6 +31,9 @@ class Utils {
 
     @NonNull
     static List<WordInfo> getEnglishWordIndices(String content) {
+        Pattern p = Pattern.compile("\n");//换行匹配，\n替换成空格，连续多个换行被替换连续多个空格
+        Matcher m = p.matcher(content);
+        content = m.replaceAll(" ");
         List<Integer> separatorIndices = getSeparatorIndices(content, ' ');
         for (Character punctuation : sPunctuations) {
             separatorIndices.addAll(getSeparatorIndices(content, punctuation));

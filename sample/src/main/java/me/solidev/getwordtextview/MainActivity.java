@@ -18,6 +18,13 @@ public class MainActivity extends AppCompatActivity {
             "                                                     \n" +
             "                                                     Tropical rainforests cover a small part (about 6 percent) of Earth’s surface. But over half (50 percent) of the world’s plant and animal species are found in them! Rainforests usually lie in tropical areas near Earth’s equator. Most of the world’s rainforests are in Africa, Southeast Asia, and South America.";
 
+    private String textStr2 = "There Is a Place\n" +
+            "                                                      \n" +
+            "                                                      There is a place where monkeys swing and howl. There is a place where jaguars leap from tree to tree. In this place, bananas and pineapples grow for free. In this place, tiny frogs live in flowers. This is where pink-colored dolphins swim in the river. This is where storms come often, and where the air is sweet.\n" +
+            "                                                      \n" +
+            "                                                      Some sunlight filters through the vines and leaves, but it is mostly dark here on the ground. It is hot, steamy, and surprisingly still. Rainwater trickles down from leaf to leaf. You hear a slow sound: drip, drip, drip.\n" +
+            "                                                      \n" +
+            "                                                      Your skin is sweaty. An insect lands on your neck. An ant quietly walks across your sandal. Suddenly a little brown monkey swings to a nearby branch. Then a bright green bird flutters past. Welcome to the Amazon rainforest.";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 //                 "                                                     Some sunlight filters through the vines and leaves, but it is mostly dark here on the ground. It is hot, steamy, and surprisingly still. Rainwater trickles down from leaf to leaf. You hear a slow sound: drip, drip, drip.\n" +
 //                 "                                                     \n" +
 //                 "                                                     Your skin is sweaty. An insect lands on your neck. An ant quietly walks across your sandal. Suddenly a little brown monkey swings to a nearby branch. Then a bright green bird flutters past. Welcome to the Amazon rainforest.");
-        mEnglishGetWordTextView.setText(textStr1);
+        mEnglishGetWordTextView.setText(textStr2);
         mEnglishGetWordTextView.setOnWordClickListener(new GetWordTextView.OnWordClickListener() {
             @Override
             public void onClick(String word) {
