@@ -48,6 +48,10 @@ class Utils {
             if (start == end) {
                 start++;
             } else {
+                String substring = content.substring(start, end);
+                if(substring.endsWith("-")){
+                    end--;
+                }
                 WordInfo wordInfo = new WordInfo();
                 wordInfo.setStart(start);
                 wordInfo.setEnd(end);
