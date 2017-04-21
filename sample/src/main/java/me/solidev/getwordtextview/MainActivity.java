@@ -12,13 +12,13 @@ public class MainActivity extends AppCompatActivity {
     private GetWordTextView mEnglishGetWordTextView;
     private GetWordTextView mChineseGetWordTextView;
 
-    private String textStr1 = "Rainforests-\n" +
+    private String textStr1 = "Rainforests—\n" +
             "                                                     \n" +
-            "                                                     Tropical- rainforests live up to their name: They are forests where it rains a lot. In fact, a typical tropical rainforest receives between 150 and 400 centimeters (59–157 in) of rain each year. They are also warm. Their temperature averages between 25° and 35° Celsius (77°F–95°F). Rainforests are green year-round. Their hot, humid, and rainy climate is perfect for tall trees, vines, ferns, and other plants. The really thick parts of rainforests are what we call jungle.\n" +
+            "                                                     Tropical— rainforests live up to their name: They are forests where it rains a lot. In fact, a typical tropical rainforest receives between 150 and 400 centimeters (59–157 in) of rain each year. They are also warm. Their temperature averages between 25° and 35° Celsius (77°F–95°F). Rainforests are green year-round. Their hot, humid, and rainy climate is perfect for tall trees, vines, ferns, and other plants. The really thick parts of rainforests are what we call jungle.\n" +
             "                                                     \n" +
             "                                                     Tropical rainforests cover a small part (about 6 percent) of Earth’s surface. But over half (50 percent) of the world’s plant and animal species are found in them! Rainforests usually lie in tropical areas near Earth’s equator. Most of the world’s rainforests are in Africa, Southeast Asia, and South America.";
 
-    private String textStr2 = "There- Is- a Place\n" +
+    private String textStr2 = "There— Is- a Place\n" +
             "                                                      \n" +
             "                                                      There is a place where monkeys swing and howl. There is a place where jaguars leap from tree to tree. In this place, bananas and pineapples grow for free. In this place, tiny frogs live in flowers. This is where pink-colored dolphins swim in the river. This is where storms come often, and where the air is sweet.\n" +
             "                                                      \n" +

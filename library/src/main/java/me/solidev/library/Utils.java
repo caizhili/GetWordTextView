@@ -49,7 +49,7 @@ class Utils {
                 start++;
             } else {
                 String substring = content.substring(start, end);
-                if(substring.endsWith("-")){
+                if(substring.endsWith("-")||substring.endsWith("—")){
                     end--;
                 }
                 WordInfo wordInfo = new WordInfo();
