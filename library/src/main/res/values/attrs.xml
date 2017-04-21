@@ -3,7 +3,8 @@
     <declare-styleable name="GetWordTextView">
         <attr name="highlightColor" format="reference|color" />
         <attr name="highlightText" format="reference|string" />
-        <attr name="selectedColor" format="reference|color" />
+        <attr name="selectedColor_bg" format="reference|color" />
+        <attr name="selectedColor_txt" format="reference|color" />
         <attr name="language">
             <enum name="English" value="0" />
             <enum name="Chinese" value="1" />

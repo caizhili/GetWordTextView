@@ -39,7 +39,8 @@ public class GetWordTextView extends TextView {
 
     private int highlightColor;
     private String highlightText;
-    private int selectedColor;
+    private int selectedColor_bg;
+    private int selectedColor_txt;
     private int language;//0:english,1:chinese
 
     public GetWordTextView(Context context) {
@@ -55,7 +56,8 @@ public class GetWordTextView extends TextView {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.GetWordTextView);
         highlightColor = ta.getColor(R.styleable.GetWordTextView_highlightColor, Color.RED);
         highlightText = ta.getString(R.styleable.GetWordTextView_highlightText);
-        selectedColor = ta.getColor(R.styleable.GetWordTextView_selectedColor, Color.BLUE);
+        selectedColor_bg = ta.getColor(R.styleable.GetWordTextView_selectedColor_bg, Color.BLUE);
+        selectedColor_txt = ta.getColor(R.styleable.GetWordTextView_selectedColor_txt, getCurrentTextColor());
         language = ta.getInt(R.styleable.GetWordTextView_language, 0);
         ta.recycle();
     }
@@ -116,8 +118,8 @@ public class GetWordTextView extends TextView {
 
     private void setSelectedSpan(TextView tv) {
         if (mSelectedBackSpan == null || mSelectedForeSpan == null) {
-            mSelectedBackSpan = new BackgroundColorSpan(selectedColor);
-            mSelectedForeSpan = new ForegroundColorSpan(Color.WHITE);
+            mSelectedBackSpan = new BackgroundColorSpan(selectedColor_bg);
+            mSelectedForeSpan = new ForegroundColorSpan(selectedColor_txt);
         } else {
             mSpannableString.removeSpan(mSelectedBackSpan);
             mSpannableString.removeSpan(mSelectedForeSpan);
