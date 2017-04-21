@@ -31,9 +31,10 @@ class Utils {
 
     @NonNull
     static List<WordInfo> getEnglishWordIndices(String content) {
-        Pattern p = Pattern.compile("\n");//换行匹配，\n替换成空格，连续多个换行被替换连续多个空格
-        Matcher m = p.matcher(content);
-        content = m.replaceAll(" ");
+//        Pattern p = Pattern.compile("\n");//换行匹配，\n替换成空格，连续多个换行被替换连续多个空格
+//        Matcher m = p.matcher(content);
+//        content = m.replaceAll(" ");
+        content = content.replaceAll("\n"," ");
         List<Integer> separatorIndices = getSeparatorIndices(content, ' ');
         for (Character punctuation : sPunctuations) {
             separatorIndices.addAll(getSeparatorIndices(content, punctuation));
