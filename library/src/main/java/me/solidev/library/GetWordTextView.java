@@ -43,6 +43,12 @@ public class GetWordTextView extends TextView {
     private int selectedColor_txt;
     private int language;//0:english,1:chinese
 
+    private boolean getWordable = true;     //设置能否取词
+
+    public void setGetWordable(boolean getWordable){
+        this.getWordable = getWordable;
+    }
+
     public GetWordTextView(Context context) {
         this(context, null);
     }
@@ -139,6 +145,9 @@ public class GetWordTextView extends TextView {
         return new ClickableSpan() {
             @Override
             public void onClick(View widget) {
+                if(!getWordable){
+                    return;
+                }
                 TextView tv = (TextView) widget;
                 if(tv.getSelectionStart()!=-1&&tv.getSelectionEnd()!=-1) {
                     String word = tv
