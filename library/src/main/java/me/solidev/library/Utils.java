@@ -34,6 +34,7 @@ class Utils {
 //        Pattern p = Pattern.compile("\n");//换行匹配，\n替换成空格，连续多个换行被替换连续多个空格
 //        Matcher m = p.matcher(content);
 //        content = m.replaceAll(" ");
+        content = content + ".";
         content = content.replaceAll("\n"," ");
         List<Integer> separatorIndices = getSeparatorIndices(content, ' ');
         for (Character punctuation : sPunctuations) {

@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
             "                                                      Some sunlight filters through the vines and leaves, but it is mostly dark here on the ground. It is hot, steamy, and surprisingly still. Rainwater trickles down from leaf to leaf. You hear a slow sound: drip, drip, drip.\n" +
             "                                                      \n" +
             "                                                      Your skin is sweaty. An insect lands on your neck. An ant quietly walks across your sandal. Suddenly a little brown monkey swings to a nearby branch. Then a bright green bird flutters past. Welcome to the Amazon rainforest.";
+    private String textStr3 = "the pencil case";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 //                 "                                                     Some sunlight filters through the vines and leaves, but it is mostly dark here on the ground. It is hot, steamy, and surprisingly still. Rainwater trickles down from leaf to leaf. You hear a slow sound: drip, drip, drip.\n" +
 //                 "                                                     \n" +
 //                 "                                                     Your skin is sweaty. An insect lands on your neck. An ant quietly walks across your sandal. Suddenly a little brown monkey swings to a nearby branch. Then a bright green bird flutters past. Welcome to the Amazon rainforest.");
-        mEnglishGetWordTextView.setText(textStr2);
+        mEnglishGetWordTextView.setText(textStr3);
         mEnglishGetWordTextView.setOnWordClickListener(new GetWordTextView.OnWordClickListener() {
             @Override
             public void onClick(String word) {
