@@ -1,9 +1,13 @@
 package me.solidev.getwordtextview;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import me.solidev.library.GetWordTextView;
 
@@ -26,20 +30,19 @@ public class MainActivity extends AppCompatActivity {
             "                                                      \n" +
             "                                                      Your skin is sweaty. An insect lands on your neck. An ant quietly walks across your sandal. Suddenly a little brown monkey swings to a nearby branch. Then a bright green bird flutters past. Welcome to the Amazon rainforest.";
     private String textStr3 = "the pencil case";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mEnglishGetWordTextView = (GetWordTextView) findViewById(R.id.english_get_word_text_view);
-        //mEnglishGetWordTextView.setText("A view that can get every word inside,it's very helpful view!");
-//         mEnglishGetWordTextView.setText("There Is a Place\n" +
-//                 "                                                     \n" +
-//                 "                                                     There is a place where monkeys swing and howl. There is a place where jaguars leap from tree to tree. In this place, bananas and pineapples grow for free. In this place, tiny frogs live in flowers. This is where pink-colored dolphins swim in the river. This is where storms come often, and where the air is sweet.\n" +
-//                 "                                                     \n" +
-//                 "                                                     Some sunlight filters through the vines and leaves, but it is mostly dark here on the ground. It is hot, steamy, and surprisingly still. Rainwater trickles down from leaf to leaf. You hear a slow sound: drip, drip, drip.\n" +
-//                 "                                                     \n" +
-//                 "                                                     Your skin is sweaty. An insect lands on your neck. An ant quietly walks across your sandal. Suddenly a little brown monkey swings to a nearby branch. Then a bright green bird flutters past. Welcome to the Amazon rainforest.");
-        mEnglishGetWordTextView.setText(textStr3);
+        List<String> strings = new ArrayList<>();
+        strings.add("is");
+        strings.add("There");
+        strings.add("in");
+        mEnglishGetWordTextView.setHighlightTexts(strings);
+        mEnglishGetWordTextView.setHighLightColor(Color.RED);
+        mEnglishGetWordTextView.setText(textStr2);
         mEnglishGetWordTextView.setOnWordClickListener(new GetWordTextView.OnWordClickListener() {
             @Override
             public void onClick(String word) {

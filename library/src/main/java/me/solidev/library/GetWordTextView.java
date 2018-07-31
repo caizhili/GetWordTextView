@@ -3,7 +3,10 @@ package me.solidev.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.support.v7.widget.AppCompatTextView;
+import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -16,6 +19,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by _SOLID
@@ -26,7 +31,7 @@ import java.util.List;
  * </p>
  */
 
-public class GetWordTextView extends TextView {
+public class GetWordTextView extends AppCompatTextView {
 
     private CharSequence mText;
     private BufferType mBufferType;
@@ -39,13 +44,14 @@ public class GetWordTextView extends TextView {
 
     private int highlightColor;
     private String highlightText;
+    private List<String> highlightTexts;
     private int selectedColor_bg;
     private int selectedColor_txt;
     private int language;//0:english,1:chinese
 
     private boolean getWordable = true;     //设置能否取词
 
-    public void setGetWordable(boolean getWordable){
+    public void setGetWordable(boolean getWordable) {
         this.getWordable = getWordable;
     }
 
@@ -68,7 +74,6 @@ public class GetWordTextView extends TextView {
         ta.recycle();
     }
 
-
     @Override
     public void setText(CharSequence text, BufferType type) {
         this.mText = text;
@@ -81,7 +86,8 @@ public class GetWordTextView extends TextView {
     private void setText() {
         mSpannableString = new SpannableString(mText);
         //set highlight text
-        setHighLightSpan(mSpannableString);
+        mSpannableString = highlightKeyword(mSpannableString, highlightText);
+        mSpannableString = setHighLightSpans(mSpannableString, highlightTexts);
         //separate word
         if (language == 0) {//deal english
             dealEnglish();
@@ -109,17 +115,26 @@ public class GetWordTextView extends TextView {
         }
     }
 
+    private SpannableString highlightKeyword(SpannableString sp, String str) {
+        if (TextUtils.isEmpty(str)) return sp;
+        //边界匹配，并且无视大小写
+        Pattern p = Pattern.compile("\\b" + str + "\\b", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(mText);
+        while (m.find()) {    //通过正则查找，逐个高亮
+            int start = m.start();
+            int end = m.end();
+            sp.setSpan(new ForegroundColorSpan(Color.parseColor("#ff6600")), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        return sp;
+    }
 
-    private void setHighLightSpan(SpannableString spannableString) {
-        if (TextUtils.isEmpty(highlightText)) {
-            return;
+    private SpannableString setHighLightSpans(SpannableString spannableString, List<String> strings) {
+        if (strings != null) {
+            for (String s : strings) {
+                spannableString = highlightKeyword(spannableString, s);
+            }
         }
-        int hIndex = mText.toString().indexOf(highlightText);
-        while (hIndex != -1) {
-            spannableString.setSpan(new ForegroundColorSpan(highlightColor), hIndex, hIndex + highlightText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            hIndex += highlightText.length();
-            hIndex = mText.toString().indexOf(highlightText, hIndex);
-        }
+        return spannableString;
     }
 
     private void setSelectedSpan(TextView tv) {
@@ -145,13 +160,13 @@ public class GetWordTextView extends TextView {
         return new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                if(!getWordable){
+                if (!getWordable) {
                     return;
                 }
                 TextView tv = (TextView) widget;
                 int selectionStart = tv.getSelectionStart();
                 int selectionEnd = tv.getSelectionEnd();
-                if(selectionStart>=0&&selectionEnd>=selectionStart) {
+                if (selectionStart >= 0 && selectionEnd >= selectionStart) {
                     String word = tv
                             .getText()
                             .subSequence(tv.getSelectionStart(),
@@ -177,6 +192,10 @@ public class GetWordTextView extends TextView {
 
     public void setHighLightText(String text) {
         highlightText = text;
+    }
+
+    public void setHighlightTexts(List<String> texts) {
+        highlightTexts = texts;
     }
 
     public void setHighLightColor(int color) {
