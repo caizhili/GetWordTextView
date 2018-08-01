@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -12,21 +13,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="me.solidev.getwordtextview.MainActivity">
 
-    <me.solidev.library.GetWordTextView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <me.solidev.library.GetWordTextView
         android:id="@+id/english_get_word_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#000000"
         android:textSize="16sp"
         app:language="English"
-        app:selectedColor_bg="@color/transparent" />
+        app:selectedColor_bg="#00000000"
+        app:selectedColor_txt="#000000" />
 
-    <me.solidev.library.GetWordTextView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <me.solidev.library.GetWordTextView
         android:id="@+id/chinese_get_word_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textSize="16sp"
-        app:highlightColor="@color/colorAccent"
+        app:highlightColor="@color/color_003300"
         app:highlightText="中文"
         app:language="Chinese"
         app:selectedColor_bg="@color/colorPrimary" />

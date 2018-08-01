@@ -40,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
         strings.add("is");
         strings.add("There");
         strings.add("in");
+        mEnglishGetWordTextView.setHighLightColor(Color.parseColor("#0A74DA"));
         mEnglishGetWordTextView.setHighlightTexts(strings);
-        mEnglishGetWordTextView.setHighLightColor(Color.RED);
+//        mEnglishGetWordTextView.setSelectedColor_bg(Color.parseColor("#000A74DA"));
         mEnglishGetWordTextView.setText(textStr2);
         mEnglishGetWordTextView.setOnWordClickListener(new GetWordTextView.OnWordClickListener() {
             @Override

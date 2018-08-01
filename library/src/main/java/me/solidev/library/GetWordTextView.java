@@ -68,7 +68,7 @@ public class GetWordTextView extends AppCompatTextView {
         highlightColor = ta.getColor(R.styleable.GetWordTextView_highlightColor, Color.RED);
         highlightText = ta.getString(R.styleable.GetWordTextView_highlightText);
         selectedColor_bg = ta.getColor(R.styleable.GetWordTextView_selectedColor_bg, Color.BLUE);
-        selectedColor_txt = ta.getColor(R.styleable.GetWordTextView_selectedColor_txt, getCurrentTextColor());
+        selectedColor_txt = ta.getColor(R.styleable.GetWordTextView_selectedColor_txt, Color.BLUE);
         language = ta.getInt(R.styleable.GetWordTextView_language, 0);
         ta.recycle();
     }
@@ -110,7 +110,6 @@ public class GetWordTextView extends AppCompatTextView {
         List<WordInfo> wordInfoList = Utils.getEnglishWordIndices(mText.toString());
         for (WordInfo wordInfo : wordInfoList) {
             mSpannableString.setSpan(getClickableSpan(), wordInfo.getStart(), wordInfo.getEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
         }
     }
 
@@ -122,7 +121,7 @@ public class GetWordTextView extends AppCompatTextView {
         while (m.find()) {    //通过正则查找，逐个高亮
             int start = m.start();
             int end = m.end();
-            sp.setSpan(new ForegroundColorSpan(Color.parseColor("#ff6600")), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            sp.setSpan(new ForegroundColorSpan(highlightColor), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return sp;
     }
@@ -195,6 +194,10 @@ public class GetWordTextView extends AppCompatTextView {
 
     public void setHighlightTexts(List<String> texts) {
         highlightTexts = texts;
+    }
+
+    public void setSelectedColor_bg(int selectedColor_bg) {
+        this.selectedColor_bg = selectedColor_bg;
     }
 
     public void setHighLightColor(int color) {
