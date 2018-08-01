@@ -77,6 +77,7 @@ public class GetWordTextView extends AppCompatTextView {
     public void setText(CharSequence text, BufferType type) {
         this.mText = text;
         mBufferType = type;
+        //点击 选词背景颜色
         setHighlightColor(Color.TRANSPARENT);
         setMovementMethod(LinkMovementMethod.getInstance());
         setText();
