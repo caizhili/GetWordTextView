@@ -14,6 +14,7 @@ import android.text.style.BackgroundColorSpan;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -110,7 +111,9 @@ public class GetWordTextView extends AppCompatTextView {
     private void dealEnglish() {
         List<WordInfo> wordInfoList = Utils.getEnglishWordIndices(mText.toString());
         for (WordInfo wordInfo : wordInfoList) {
-            mSpannableString.setSpan(getClickableSpan(), wordInfo.getStart(), wordInfo.getEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (wordInfo.getStart() != wordInfo.getEnd()) {
+                mSpannableString.setSpan(getClickableSpan(), wordInfo.getStart(), wordInfo.getEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
         }
     }
 
@@ -122,6 +125,7 @@ public class GetWordTextView extends AppCompatTextView {
         while (m.find()) {    //通过正则查找，逐个高亮
             int start = m.start();
             int end = m.end();
+            Log.e("getWordText", "start-" + start + "-end-" + end);
             sp.setSpan(new ForegroundColorSpan(highlightColor), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return sp;
